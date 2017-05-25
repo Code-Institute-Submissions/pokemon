@@ -17,10 +17,9 @@ This website uses Flask to route viewers through the site. The site is styled wi
 ## Features
  
 ### Existing Features
-- None
+- Eye Catching front page
 
 ### Features Left to Implement
-- Eye Catching front page
 - About page to explain what the site does
 - Charts page with:
 	- Sunburst chart to show/filter different pokemon types
@@ -32,7 +31,7 @@ This website uses Flask to route viewers through the site. The site is styled wi
 ## Tech Used
 ### Some the tech used includes:
 - [Bootstrap](http://getbootstrap.com/)
-    - We use **Bootstrap** to give our project a simple, responsive layout
+    - I've used **Bootstrap** to give my project a simple, responsive layout
 
 ## Testing
 
@@ -40,3 +39,4 @@ This website uses Flask to route viewers through the site. The site is styled wi
 ## Credits
 
 - The data used on this site are from [Veekun's github page](https://github.com/veekun/pokedex/tree/master/pokedex/data/csv)
+- Main image created by myself using [Paint.NET](https://www.getpaint.net/index.html)
