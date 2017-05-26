@@ -15,7 +15,7 @@
         <div class="container">
             <div class="navbar-header">
                 <!-- Nintendo Logo -->
-                <a class="navbar-brand" href="/"><img src="{{ url_for ('static', filename='img/nintendologo.svg') }}" alt="Nintendo Logo"/></a>
+                <a class="navbar-brand" href="https://www.nintendo.co.uk/index.html"><img src="{{ url_for ('static', filename='img/nintendologo.svg') }}" alt="Nintendo Logo"/></a>
 
                 <!-- Collapsable menu for mobile devices -->
 				<button type="button" class="navbar-toggle" id="pokemonNavButton" data-toggle="collapse" data-target="#pokemonNavList">
@@ -37,13 +37,15 @@
         </div>
     </nav>
 
+    <figure id="backgroundcontainer">
+        <img id="backgroundimg" src="{{ url_for ('static', filename='img/background.jpg') }}">
+    </figure>
 
     <section id="main_container" class="container">
         <!-- Where content from pages is injected -->
         {% block content %}
         {% endblock %}
     </section>
-
 
     <script type='text/javascript' src='https://d3js.org/d3.v3.js'></script>
     <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.0/dc.min.js"></script>

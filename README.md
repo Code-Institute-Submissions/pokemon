@@ -32,6 +32,8 @@ This website uses Flask to route viewers through the site. The site is styled wi
 ### Some the tech used includes:
 - [Bootstrap](http://getbootstrap.com/)
     - I've used **Bootstrap** to give my project a simple, responsive layout
+- [Flask](http://flask.pocoo.org)
+    - Used **Flask** to route through the website
 
 ## Testing
 
@@ -40,3 +42,4 @@ This website uses Flask to route viewers through the site. The site is styled wi
 
 - The data used on this site are from [Veekun's github page](https://github.com/veekun/pokedex/tree/master/pokedex/data/csv)
 - Main image created by myself using [Paint.NET](https://www.getpaint.net/index.html)
+- Background image from [Art Station](https://www.artstation.com/artwork/W6xeG)

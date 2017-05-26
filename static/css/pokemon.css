@@ -1,5 +1,19 @@
+/* Layout */
 body {
     background-color: ghostwhite;
+    font-size: 20px;
+    color: #383838;
+}
+
+#backgroundcontainer {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+}
+
+#backgroundimg {
+    height: 100%;
+    opacity: 0.3;
 }
 
 /* Navbar */
@@ -9,6 +23,7 @@ body {
 
 .navbar {
     border-bottom: 3px solid darkgrey;
+    background-color: ghostwhite;
 }
 
 .navbar-brand {
@@ -30,7 +45,6 @@ body {
     height: 70px;
 }
 #pokemonNavList {
-    background-color: ghostwhite;
     margin-bottom: 0;
 }
 
@@ -69,5 +83,38 @@ body {
     #welcome_image {
         width: 100%;
         margin: 0;
+    }
+}
+
+/* About Page */
+.aboutinfo {
+    display: flex;
+    align-items: center;
+}
+
+.aboutpics {
+    width: 250px;
+}
+
+#aboutpic1 {
+    margin-left: 20px;
+}
+
+#aboutpic2 {
+    margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+    .aboutinfo {
+        display: block;
+    }
+    .aboutfigures {
+        text-align: center;
+    }
+    #aboutpic1 {
+        margin: 0 0 10px 0;
+    }
+    #aboutpic2 {
+        display: none;
     }
 }

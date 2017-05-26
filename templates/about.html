@@ -1,4 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-About page
+    <article class="container aboutinfo">
+        <p>
+            Pokemon was created by Satoshi Tajari in 1995. At first, the series started with a couple of games for the original Gameboy, since then the franchise has exploded into one of the most well known and best selling game series of all time. The franchise also has an anime series, many movies, a trading card game and even a musical under it's belt. It's hard to know exactly how much the franchise is worth, but cumulatively, the Pokemon video games series has now sold more than 290 million copies and in 2016 they reported grossed revenues of $50.4 billion.
+        </p>
+        <figure class="aboutfigures">
+            <img id="aboutpic1" class="aboutpics" src="{{ url_for ('static', filename='img/vaporeon.png') }}" alt="Vaporeon Image">
+        </figure>
+    </article>
+    <article class="container aboutinfo">
+        <figure class="aboutfigures">
+            <img id="aboutpic2" class="aboutpics" src="{{ url_for ('static', filename='img/chimchar.png') }}" alt="Chimchar Image">
+        </figure>
+        <p>
+            This site has been made to allow users, whether they are casual players or Pokemon veterans, to be able to see information about Pokemon quickly and easily without having to sift through the entire roster. You will be able to filter the Pokemon so you only have to look at the ones you are interested in. You will be able to view Pokemons base stats, whether they can evolve, their type and their gender.
+        </p>
+    </article>
 {% endblock %}
