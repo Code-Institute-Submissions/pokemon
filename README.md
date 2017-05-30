@@ -18,9 +18,9 @@ This website uses Flask to route viewers through the site. The site is styled wi
  
 ### Existing Features
 - Eye Catching front page
+- About page to explain what the site does
 
 ### Features Left to Implement
-- About page to explain what the site does
 - Charts page with:
 	- Sunburst chart to show/filter different pokemon types
 	- Bar chart to show average pokemons stats
