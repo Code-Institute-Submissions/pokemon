@@ -1,13 +1,15 @@
 from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
+import pprint
+import json
 
 app = Flask(__name__)
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'pokemon_project'
-COLLECTION = 'pokemon'
+COLLECTION = 'pokemon_species'
 
 
 # Routing to correct HTML pages
@@ -25,19 +27,44 @@ def about():
 def charts():
     return render_template("charts.html")
 
-@app.route("/temp")
-def temp():
-    # Fields from DB I'm using
-    FIELDS = {
-        '_id': True, 'identifier': True, 'species_id': True
-    }
+@app.route("/pokemonproject")
+def pokemonproject():
+    conn = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    db = conn[DBS_NAME]
+    pokemon_full = db.pokemon_species.aggregate([
+        {
+            "$lookup": {
+                "from": 'pokemon_types',
+                "localField": 'id',
+                "foreignField": 'id',
+                "as": 'types'
+            }
+        },
+        {
+            "$unwind": '$types'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["1", "$types.slot"]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            "$project": {
+                "_id": 0,
+                "id": 1,
+                "identifier": 1,
+                "gender_rate": 1,
+                "type1": "$types.type_id"
+            }
+        }
+    ])
 
-    # Connection to DB
-    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
-        collection = conn[DBS_NAME][COLLECTION_NAME]
-        projects = collection.find(projection=FIELDS)
-        return json.dumps(list(projects))
-
+    pprint.pprint(list(pokemon_full))
+    return json.dumps(list(pokemon_full))
 
 # Run App
 if __name__ == "__main__":
