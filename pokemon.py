@@ -69,9 +69,9 @@ def pokemonproject():
         {
             "$redact": {
                 "$cond": [
-                    {"$eq": ["$types2.slot", 2]},
+                    {"$eq": ["$types2.slot", 122]},
                     "$$KEEP",
-                    "$$PRUNE"
+                    "$$KEEP"
                 ]
             }
         },
@@ -220,6 +220,7 @@ def pokemonproject():
         }
     ])
 
+    # Return full pokemon JSON
     return json.dumps(list(pokemon_full))
 
 # Run App
