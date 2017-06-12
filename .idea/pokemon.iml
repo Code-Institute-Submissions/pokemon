@@ -10,6 +10,7 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="d3-queue" level="application" />
     <orderEntry type="library" name="dc" level="application" />
+    <orderEntry type="library" name="intro" level="application" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="C:\Users\futoi\Documents\Work\pokemon\requirements.txt" />

@@ -79,6 +79,7 @@ function makeGraphs (error, pokemonproject) {
         .radius(185)
         .transitionDuration(1500)
         .cy([200]).cx([200])
+        // Adding correct colours for each type of pokemon
         .colors(d3.scale.ordinal().range(['#97EC8B','#3C2C17','#133061','#FFF63D','#F8A2F4','#930F0F','#F02E2E','#cca3de','#46087e','#21DD21','#BF9B76','#81E2D9','#E0E2E2','#8035EC','#C2378E','#656565','#87A0A9','#2681F5']))
         .legend(dc.legend().x(410).y(20).itemHeight(13).gap(5))
         .renderLabel(false)
@@ -94,6 +95,7 @@ function makeGraphs (error, pokemonproject) {
         .x(d3.scale.linear().domain([minHP,maxHP]))
         .yAxisLabel("Number of Pokemon")
         .xAxisLabel("Base HP")
+        .ordinalColors(['#009109'])
         .elasticY(true)
         .xAxis().ticks(10);
 
@@ -106,6 +108,7 @@ function makeGraphs (error, pokemonproject) {
         .x(d3.scale.linear().domain([minAtk,maxAtk]))
         .yAxisLabel("Number of Pokemon")
         .xAxisLabel("Base Attack")
+        .ordinalColors(['#910014'])
         .elasticY(true)
         .xAxis().ticks(10);
 
@@ -118,6 +121,7 @@ function makeGraphs (error, pokemonproject) {
         .x(d3.scale.linear().domain([minDef,maxDef]))
         .yAxisLabel("Number of Pokemon")
         .xAxisLabel("Base Defense")
+        .ordinalColors(['#004a91'])
         .elasticY(true)
         .xAxis().ticks(10);
 
@@ -130,6 +134,7 @@ function makeGraphs (error, pokemonproject) {
         .x(d3.scale.linear().domain([minSAtk,maxSAtk]))
         .yAxisLabel("Number of Pokemon")
         .xAxisLabel("Base Special Attack")
+        .ordinalColors(['#914900'])
         .elasticY(true)
         .xAxis().ticks(10);
 
@@ -142,6 +147,7 @@ function makeGraphs (error, pokemonproject) {
         .x(d3.scale.linear().domain([minSDef,maxSDef]))
         .yAxisLabel("Number of Pokemon")
         .xAxisLabel("Base Special Defense")
+        .ordinalColors(['#210091'])
         .elasticY(true)
         .xAxis().ticks(10);
 
@@ -154,6 +160,7 @@ function makeGraphs (error, pokemonproject) {
         .x(d3.scale.linear().domain([minSpd,maxSpd]))
         .yAxisLabel("Number of Pokemon")
         .xAxisLabel("Base Speed")
+        .ordinalColors(['#910087'])
         .elasticY(true)
         .xAxis().ticks(10);
 

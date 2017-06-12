@@ -1,87 +1,105 @@
 {% extends "layout.html" %}
 {% block content %}
+<!-- Tour Button -->
+<article class="col-md-12">
+    <div id="tour" class="chart-container">
+        <h1>Take a tour!</h1>
+        <button class="intro_button" type="button" autofocus onclick="javascript:introJs().start();">Start Tour</button>
+    </div>
+</article>
 
 <!-- Type Pie Chart -->
-<article class="col-sm-12 col-md-6 chart-container">
-    <div class="chart-wrapper">
-        <div class="chart-title">Pokemon by Main Type</div>
-        <div class="chart-stage">
-            <div id="type-chart"></div>
+<article class="col-md-12 col-lg-6 chart-column">
+    <div class="chart-container">
+        <div class="chart-wrapper" data-step="1" data-intro="Here you can see pokemon displayed by type. You can click on each segment or the legend to select the types you wish to view." style="..." data-position="bottom">
+            <div class="chart-title">Pokemon by Main Type</div>
+            <div class="chart-stage">
+                <div id="type-chart"></div>
+            </div>
         </div>
     </div>
 </article>
 
 
-<article class="col-sm-12 col-md-6 chart-container">
-    <ul class="nav nav-pills">
-        <li class="active"><a data-toggle="pill" href="#hpChart">HP</a></li>
-        <li><a data-toggle="pill" href="#atkChart">Attack</a></li>
-        <li><a data-toggle="pill" href="#defChart">Defense</a></li>
-        <li><a data-toggle="pill" href="#sdefChart">S-Attack</a></li>
-        <li><a data-toggle="pill" href="#satkChart">S-Defense</a></li>
-        <li><a data-toggle="pill" href="#spdChart">Speed</a></li>
-    </ul>
-    <div class="tab-content">
-        <!-- HP Bar Chart -->
-        <div id="hpChart" class="chart-wrapper tab-pane fade in active">
-            <div class="chart-stage">
-                <div id="hp-chart"></div>
+<article class="col-md-12 col-lg-6 chart-column">
+    <div class="chart-container" data-step="2" data-intro="Pokemon's stats are shown here. Select which stat you wish to view at the top and you can select a section of each barchart by clicking and dragging." style="..." data-position="bottom">
+        <!-- Stat selection for charts -->
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="#hpChart">HP</a></li>
+            <li><a data-toggle="pill" href="#atkChart">Attack</a></li>
+            <li><a data-toggle="pill" href="#defChart">Defense</a></li>
+            <li><a data-toggle="pill" href="#satkChart">S-Attack</a></li>
+            <li><a data-toggle="pill" href="#sdefChart">S-Defense</a></li>
+            <li><a data-toggle="pill" href="#spdChart">Speed</a></li>
+        </ul>
+        <div class="tab-content">
+            <!-- HP Bar Chart -->
+            <div id="hpChart" class="chart-wrapper tab-pane fade in active">
+                <div class="chart-stage">
+                    <div id="hp-chart"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Attack Bar Chart -->
-        <div id="atkChart" class="chart-wrapper tab-pane fade">
-            <div class="chart-stage">
-                <div id="attack-chart"></div>
+            <!-- Attack Bar Chart -->
+            <div id="atkChart" class="chart-wrapper tab-pane fade">
+                <div class="chart-stage">
+                    <div id="attack-chart"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Defense Bar Chart -->
-        <div id="defChart" class="chart-wrapper tab-pane fade">
-            <div class="chart-stage">
-                <div id="defense-chart"></div>
+            <!-- Defense Bar Chart -->
+            <div id="defChart" class="chart-wrapper tab-pane fade">
+                <div class="chart-stage">
+                    <div id="defense-chart"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Special Attack Bar Chart -->
-        <div id="satkChart" class="chart-wrapper tab-pane fade">
-            <div class="chart-stage">
-                <div id="special-attack-chart"></div>
+            <!-- Special Attack Bar Chart -->
+            <div id="satkChart" class="chart-wrapper tab-pane fade">
+                <div class="chart-stage">
+                    <div id="special-attack-chart"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Special Defense Bar Chart -->
-        <div id="sdefChart" class="chart-wrapper tab-pane fade">
-            <div class="chart-stage">
-                <div id="special-defense-chart"></div>
+            <!-- Special Defense Bar Chart -->
+            <div id="sdefChart" class="chart-wrapper tab-pane fade">
+                <div class="chart-stage">
+                    <div id="special-defense-chart"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Speed Bar Chart -->
-        <div id="spdChart" class="chart-wrapper tab-pane fade">
-            <div class="chart-stage">
-                <div id="speed-chart"></div>
+            <!-- Speed Bar Chart -->
+            <div id="spdChart" class="chart-wrapper tab-pane fade">
+                <div class="chart-stage">
+                    <div id="speed-chart"></div>
+                </div>
             </div>
         </div>
     </div>
 </article>
 
 <!-- Pokemon Menu -->
-<article class="col-sm-12 col-md-6 chart-container">
-    <div class="chart-wrapper">
-        <div class="chart-title">Pokemon Select</div>
-        <div class="chart-stage">
-            <div id="pokemon-select"></div>
+<article class="col-md-12 col-lg-6 chart-column">
+    <div class="chart-container">
+        <div class="chart-wrapper totals" data-step="3" data-intro="Here is a list of all the pokemon you currently have selected, if you wish you can choose a pokemon and only see the stats for that specific pokemon." style="..." data-position="top">
+            <div class="chart-title">Pokemon Select: </div>
+            <div class="chart-stage">
+                <div id="pokemon-select"></div>
+            </div>
         </div>
     </div>
 </article>
 
 <!-- Pokemon Total -->
-<article class="col-sm-12 col-md-6 chart-container">
-    <div class="chart-wrapper">
-        <div class="chart-title">Total Pokemon</div>
-        <div class="chart-stage">
-            <div id="total-pokemon"></div>
+<article class="col-md-12 col-lg-6 chart-column">
+    <div class="chart-container">
+        <div class="chart-wrapper" data-step="4" data-intro="This displays the total number of pokemon you have selected currently." style="..." data-position="top">
+            <div class="totals">
+                <div class="chart-title">Total Pokemon: </div>
+                <div class="chart-stage">
+                    <div id="total-pokemon"></div>
+                </div>
+            </div>
         </div>
     </div>
 </article>
@@ -91,5 +109,6 @@
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js'></script>
 <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.0/dc.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-queue/1.0.7/d3-queue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.5.0/intro.js"></script>
 <script type="text/javascript" src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
 {% endblock %}

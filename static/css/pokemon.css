@@ -120,10 +120,76 @@ body {
 }
 
 /* Charts Page */
+.chart-column {
+    padding: 0;
+}
+
 .chart-container {
-    font-size: 16px;
+    font-size: 26px;
+    color: dimgray;
+    background-color: rgba(248,248,255,0.5);
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 10px;
+}
+div.dc-chart {
+    float: none;
+}
+
+.nav-pills > li {
+    float: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.nav-pills > li > a {
+    color: #337ab7;
+    background-color: #ffd96f;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: #ffd96f;
+    background-color: #337ab7;
 }
 
 .tab-content {
     font-size: 12px;
 }
+
+.totals {
+    font-size: 26px;
+}
+
+.totals > .chart-stage, .chart-title, #total-pokemon, #tour > h1, #tour > button {
+    display: inline-block;
+}
+
+#tour {
+    margin: 0 auto;
+    width: 50%;
+}
+
+#tour > button {
+    font-size: 24px;
+}
+
+#tour > h1 {
+    margin: 0 20px 0 0;
+    font-size: 28px;
+}
+
+@media (max-width: 767px) {
+    .chart-container {
+        margin: 10px 0;
+        padding: 10px 0;
+    }
+    .chart-column {
+        padding: 0;
+        margin: 0;
+    }
+    #tour {
+        width: 100%;
+    }
+}
+
