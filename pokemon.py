@@ -55,25 +55,16 @@ def pokemonproject():
             }
         },
         {
-            # Adding second type to each pokemon
+            # Changing type_id to labelled type
             "$lookup": {
-                "from": 'pokemon_types',
-                "localField": 'id',
-                "foreignField": 'pokemon_id',
+                "from": 'types',
+                "localField": 'types.type_id',
+                "foreignField": 'id',
                 "as": 'types2'
             }
         },
         {
             "$unwind": '$types2'
-        },
-        {
-            "$redact": {
-                "$cond": [
-                    {"$eq": ["$types2.slot", 122]},
-                    "$$KEEP",
-                    "$$KEEP"
-                ]
-            }
         },
         {
             # Adding HP to each pokemon
@@ -208,8 +199,8 @@ def pokemonproject():
                 "id": 1,
                 "identifier": 1,
                 "gender_rate": 1,
-                "type1": "$types.type_id",
-                "type2": "$types2.type_id",
+                "type1": "$types2.identifier",
+                # "type2": "$types2.type_id",
                 "hp": "$hp.base_stat",
                 "attack": "$atk.base_stat",
                 "defense": "$def.base_stat",

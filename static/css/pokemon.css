@@ -118,3 +118,12 @@ body {
         display: none;
     }
 }
+
+/* Charts Page */
+.chart-container {
+    font-size: 16px;
+}
+
+.tab-content {
+    font-size: 12px;
+}

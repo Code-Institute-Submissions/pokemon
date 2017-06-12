@@ -2,24 +2,17 @@ queue()
     .defer(d3.json, "/pokemonproject")
     .await(makeGraphs);
 
-function makeGraphs (error, projectsJson) {
-    var pokemonproject = projectsJson;
-    // pokemonproject.forEach(function (d) {
-    //   d["gender_rate"] = d["gender_rate"];
-    // });
-
+function makeGraphs (error, pokemonproject) {
 
     var ndx = crossfilter(pokemonproject);
     var all = ndx.groupAll();
 
+    // Creates dimensions from the json
     var pokeTypeDim = ndx.dimension(function (d) {
         return d["type1"];
     });
     var pokeNameDim = ndx.dimension(function (d) {
         return d["identifier"];
-    });
-    var pokeGenderRateDim = ndx.dimension(function (d) {
-        return d["gender_rate"];
     });
     var pokeHPDim = ndx.dimension(function (d) {
         return d["hp"];
@@ -39,32 +32,140 @@ function makeGraphs (error, projectsJson) {
     var pokeSpeedDim = ndx.dimension(function (d) {
         return d["speed"];
     });
-    var pokeTotalDim = ndx.dimension(function (d) {
-        return d.total;
-    })
-    
+
+    // Create groups for each dimension
     var numPokemonByType = pokeTypeDim.group();
     var numPokemonNames = pokeNameDim.group();
-    var numPokemonHPAverage = pokeHPDim.group();
-    var numPokemonAttackAverage = pokeAttackDim.group();
-    var numPokemonDefenseAverage = pokeDefenseDim.group();
-    var numPokemonSpecialAttackAverage = pokeSpecialAttackDim.group();
-    var numPokemonSpecialDefenseAverage = pokeSpecialDefenseDim.group();
-    var numPokemonSpeedAverage = pokeSpeedDim.group();
+    var numPokemonHP = pokeHPDim.group();
+    var numPokemonAttack = pokeAttackDim.group();
+    var numPokemonDefense = pokeDefenseDim.group();
+    var numPokemonSpecialAttack = pokeSpecialAttackDim.group();
+    var numPokemonSpecialDefense = pokeSpecialDefenseDim.group();
+    var numPokemonSpeed = pokeSpeedDim.group();
 
-    var testChart = dc.barChart("#test-chart");
+    // Declare chart types and link to HTML
+    var typeChart = dc.pieChart("#type-chart");
+    var hpChart = dc.barChart("#hp-chart");
+    var atkChart = dc.barChart("#attack-chart");
+    var defChart = dc.barChart("#defense-chart");
+    var satkChart = dc.barChart("#special-attack-chart");
+    var sdefChart = dc.barChart("#special-defense-chart");
+    var spdChart = dc.barChart("#speed-chart");
+    var pokemonTotal = dc.numberDisplay("#total-pokemon");
 
+    // Calculate min and max of fields for graphs x-axis
+    var minHP = pokeHPDim.bottom(1)[0]["hp"];
+    var maxHP = pokeHPDim.top(1)[0]["hp"];
+    var minAtk = pokeAttackDim.bottom(1)[0]["attack"];
+    var maxAtk = pokeAttackDim.top(1)[0]["attack"];
+    var minDef = pokeDefenseDim.bottom(1)[0]["defense"];
+    var maxDef = pokeDefenseDim.top(1)[0]["defense"];
+    var minSAtk = pokeSpecialAttackDim.bottom(1)[0]["special_attack"];
+    var maxSAtk = pokeSpecialAttackDim.top(1)[0]["special_attack"];
+    var minSDef = pokeSpecialDefenseDim.bottom(1)[0]["special_defense"];
+    var maxSDef = pokeSpecialDefenseDim.top(1)[0]["special_defense"];
+    var minSpd = pokeSpeedDim.bottom(1)[0]["speed"];
+    var maxSpd = pokeSpeedDim.top(1)[0]["speed"];
 
-    testChart
-        .width(900)
-        .height(750)
+    // Pokemon Select Box
+    selectField = dc.selectMenu('#pokemon-select')
+        .dimension(pokeNameDim)
+        .group(numPokemonNames);
+
+    // Type Pie Chart
+    typeChart
+        .height(400)
+        .width(480)
+        .radius(185)
+        .transitionDuration(1500)
+        .cy([200]).cx([200])
+        .colors(d3.scale.ordinal().range(['#97EC8B','#3C2C17','#133061','#FFF63D','#F8A2F4','#930F0F','#F02E2E','#cca3de','#46087e','#21DD21','#BF9B76','#81E2D9','#E0E2E2','#8035EC','#C2378E','#656565','#87A0A9','#2681F5']))
+        .legend(dc.legend().x(410).y(20).itemHeight(13).gap(5))
+        .renderLabel(false)
+        .dimension(pokeTypeDim)
+        .group(numPokemonByType);
+
+    // HP Barchart
+    hpChart
+        .width(480)
+        .height(400)
         .dimension(pokeHPDim)
-        .group(numPokemonHPAverage)
-        .x(d3.scale.linear().domain([0,200]))
-        .yAxisLabel("Base Stats")
+        .group(numPokemonHP)
+        .x(d3.scale.linear().domain([minHP,maxHP]))
+        .yAxisLabel("Number of Pokemon")
+        .xAxisLabel("Base HP")
         .elasticY(true)
         .xAxis().ticks(10);
 
+    // Attack Barchart
+    atkChart
+        .width(480)
+        .height(400)
+        .dimension(pokeAttackDim)
+        .group(numPokemonAttack)
+        .x(d3.scale.linear().domain([minAtk,maxAtk]))
+        .yAxisLabel("Number of Pokemon")
+        .xAxisLabel("Base Attack")
+        .elasticY(true)
+        .xAxis().ticks(10);
 
+    // Defense Barchart
+    defChart
+        .width(480)
+        .height(400)
+        .dimension(pokeDefenseDim)
+        .group(numPokemonDefense)
+        .x(d3.scale.linear().domain([minDef,maxDef]))
+        .yAxisLabel("Number of Pokemon")
+        .xAxisLabel("Base Defense")
+        .elasticY(true)
+        .xAxis().ticks(10);
+
+    // Special Attack Barchart
+    satkChart
+        .width(480)
+        .height(400)
+        .dimension(pokeSpecialAttackDim)
+        .group(numPokemonSpecialAttack)
+        .x(d3.scale.linear().domain([minSAtk,maxSAtk]))
+        .yAxisLabel("Number of Pokemon")
+        .xAxisLabel("Base Special Attack")
+        .elasticY(true)
+        .xAxis().ticks(10);
+
+    // Special Defense Barchart
+    sdefChart
+        .width(480)
+        .height(400)
+        .dimension(pokeSpecialDefenseDim)
+        .group(numPokemonSpecialDefense)
+        .x(d3.scale.linear().domain([minSDef,maxSDef]))
+        .yAxisLabel("Number of Pokemon")
+        .xAxisLabel("Base Special Defense")
+        .elasticY(true)
+        .xAxis().ticks(10);
+
+    // Speed Barchart
+    spdChart
+        .width(480)
+        .height(400)
+        .dimension(pokeSpeedDim)
+        .group(numPokemonSpeed)
+        .x(d3.scale.linear().domain([minSpd,maxSpd]))
+        .yAxisLabel("Number of Pokemon")
+        .xAxisLabel("Base Speed")
+        .elasticY(true)
+        .xAxis().ticks(10);
+
+    // Box for total number of Pokemon
+    pokemonTotal
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function (d) {
+            return d;
+        })
+        .group(all)
+        .formatNumber(d3.format(".3s"));
+
+    // Render everything on page
     dc.renderAll();
 }

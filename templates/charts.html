@@ -1,12 +1,95 @@
 {% extends "layout.html" %}
 {% block content %}
-          <!-- Test Graph -->
-          <div class="col-sm-6">
-            <div class="chart-wrapper">
-              <div class="chart-title">Test</div>
-              <div class="chart-stage">
-                <div id="test-chart"></div>
-              </div>
+
+<!-- Type Pie Chart -->
+<article class="col-sm-12 col-md-6 chart-container">
+    <div class="chart-wrapper">
+        <div class="chart-title">Pokemon by Main Type</div>
+        <div class="chart-stage">
+            <div id="type-chart"></div>
+        </div>
+    </div>
+</article>
+
+
+<article class="col-sm-12 col-md-6 chart-container">
+    <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="pill" href="#hpChart">HP</a></li>
+        <li><a data-toggle="pill" href="#atkChart">Attack</a></li>
+        <li><a data-toggle="pill" href="#defChart">Defense</a></li>
+        <li><a data-toggle="pill" href="#sdefChart">S-Attack</a></li>
+        <li><a data-toggle="pill" href="#satkChart">S-Defense</a></li>
+        <li><a data-toggle="pill" href="#spdChart">Speed</a></li>
+    </ul>
+    <div class="tab-content">
+        <!-- HP Bar Chart -->
+        <div id="hpChart" class="chart-wrapper tab-pane fade in active">
+            <div class="chart-stage">
+                <div id="hp-chart"></div>
             </div>
-          </div>
+        </div>
+
+        <!-- Attack Bar Chart -->
+        <div id="atkChart" class="chart-wrapper tab-pane fade">
+            <div class="chart-stage">
+                <div id="attack-chart"></div>
+            </div>
+        </div>
+
+        <!-- Defense Bar Chart -->
+        <div id="defChart" class="chart-wrapper tab-pane fade">
+            <div class="chart-stage">
+                <div id="defense-chart"></div>
+            </div>
+        </div>
+
+        <!-- Special Attack Bar Chart -->
+        <div id="satkChart" class="chart-wrapper tab-pane fade">
+            <div class="chart-stage">
+                <div id="special-attack-chart"></div>
+            </div>
+        </div>
+
+        <!-- Special Defense Bar Chart -->
+        <div id="sdefChart" class="chart-wrapper tab-pane fade">
+            <div class="chart-stage">
+                <div id="special-defense-chart"></div>
+            </div>
+        </div>
+
+        <!-- Speed Bar Chart -->
+        <div id="spdChart" class="chart-wrapper tab-pane fade">
+            <div class="chart-stage">
+                <div id="speed-chart"></div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- Pokemon Menu -->
+<article class="col-sm-12 col-md-6 chart-container">
+    <div class="chart-wrapper">
+        <div class="chart-title">Pokemon Select</div>
+        <div class="chart-stage">
+            <div id="pokemon-select"></div>
+        </div>
+    </div>
+</article>
+
+<!-- Pokemon Total -->
+<article class="col-sm-12 col-md-6 chart-container">
+    <div class="chart-wrapper">
+        <div class="chart-title">Total Pokemon</div>
+        <div class="chart-stage">
+            <div id="total-pokemon"></div>
+        </div>
+    </div>
+</article>
+
+
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.5/crossfilter.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js'></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.0/dc.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-queue/1.0.7/d3-queue.js"></script>
+<script type="text/javascript" src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
 {% endblock %}
