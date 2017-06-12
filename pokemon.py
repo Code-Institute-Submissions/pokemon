@@ -2,12 +2,12 @@ from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
 import json
+import os
 
 app = Flask(__name__)
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = 'pokemon_project'
+MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
+DBS_NAME = os.getenv('MONGO_DB_NAME', 'pokemon_project')
 COLLECTION = 'pokemon_species'
 
 
@@ -29,7 +29,7 @@ def charts():
 @app.route("/pokemonproject")
 def pokemonproject():
     # Connection to MongoDB
-    conn = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    conn = MongoClient(MONGODB_URI)
     db = conn[DBS_NAME]
     # Creating one JSON to work with in javascript
     pokemon_full = db.pokemon_species.aggregate([
