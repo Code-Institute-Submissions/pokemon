@@ -19,14 +19,13 @@ This website uses Flask to route viewers through the site. The site is styled wi
 ### Existing Features
 - Eye Catching front page
 - About page to explain what the site does
+- Charts page with:
+	- Pie chart to show split of pokemon types
+	- Bar charts to show the spread of each of the 6 main base stats for pokemon
+	- Page tour to explain each graph
 
 ### Features Left to Implement
-- Charts page with:
-	- Sunburst chart to show/filter different pokemon types
-	- Bar chart to show average pokemons stats
-	- Pie chart to show how many pokemon can/can't evolve and and how many are mega-evolved
-	- Gender bubbles to see the spread of pokemons genders
-	- Page tour to explain each graph
+- None
 
 ## Tech Used
 ### Some the tech used includes:
@@ -34,9 +33,14 @@ This website uses Flask to route viewers through the site. The site is styled wi
     - I've used **Bootstrap** to give my project a simple, responsive layout
 - [Flask](http://flask.pocoo.org)
     - Used **Flask** to route through the website
-
-## Testing
-
+- [IntroJS](http://introjs.com)
+    - Used to create tour of the charts page
+- [D3](https://d3js.org)
+    - Used for visualizing data
+- [Crossfilter](http://square.github.io/crossfilter/)
+    - Used for filtering dataset
+- [DC](https://dc-js.github.io/dc.js/)
+    - Used to create dynamic charts
 
 ## Credits
 
