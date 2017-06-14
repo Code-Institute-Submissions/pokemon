@@ -8,11 +8,11 @@ This is a website for people that enjoy playing pokemon to see how pokemon compa
  
 ### What does it do?
  
-This website is made to show a lot information about Pokemon and allow the user to filter the information as want to.
+This website is made to show a lot information about Pokemon in a visual way and allow the user to filter the information as want to. Website originally had a different design for charts, see wireframes, but due to **DC** dimension limitations had to be changed.
  
 ### How does it work
  
-This website uses Flask to route viewers through the site. The site is styled with Bootstrap.
+This website uses Flask to route viewers through the site. The site is styled with Bootstrap. The charts are created using D3, Crossfilter and DC. Tour was made using intro.js. Data for the website is stored in MongoDB, all the collections I used were stripped down by myself, excluding types.csv, in Mongoshell in order to reduce the amount of information being processed.
 
 ## Features
  
@@ -30,9 +30,9 @@ This website uses Flask to route viewers through the site. The site is styled wi
 ## Tech Used
 ### Some the tech used includes:
 - [Bootstrap](http://getbootstrap.com/)
-    - I've used **Bootstrap** to give my project a simple, responsive layout
+    - Used to give my project a simple, responsive layout
 - [Flask](http://flask.pocoo.org)
-    - Used **Flask** to route through the website
+    - Used to route through the website
 - [IntroJS](http://introjs.com)
     - Used to create tour of the charts page
 - [D3](https://d3js.org)
@@ -41,6 +41,13 @@ This website uses Flask to route viewers through the site. The site is styled wi
     - Used for filtering dataset
 - [DC](https://dc-js.github.io/dc.js/)
     - Used to create dynamic charts
+- [MongoDB](https://www.mongodb.com)
+    - Used to store information
+- [PyMongo](https://api.mongodb.com/python/current/)
+    - Used to allow interaction between Python and MongoDB
+
+## Testing
+    - Site was tested using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
 
 ## Credits
 

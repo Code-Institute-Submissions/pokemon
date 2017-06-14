@@ -6,6 +6,7 @@ import os
 
 app = Flask(__name__)
 
+# Set connection properties
 MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'pokemon_project')
 COLLECTION = 'pokemon_species'

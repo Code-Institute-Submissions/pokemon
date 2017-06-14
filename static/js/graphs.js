@@ -85,6 +85,7 @@ function makeGraphs (error, pokemonproject) {
     typeChart
         .height(400)
         .width(chartWidth)
+        // Offset pie chart to allow room for legend
         .cx([chartWidth/2 + 15])
         .radius(pieRadius)
         .transitionDuration(1500)
@@ -229,8 +230,6 @@ function makeGraphs (error, pokemonproject) {
             .rescale()
             .redraw();
     });
-
-    console.log(hpChart.radius);
 
     // Render everything on page
     dc.renderAll();
