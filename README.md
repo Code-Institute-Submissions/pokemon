@@ -12,7 +12,7 @@ This website is made to show a lot information about Pokemon in a visual way and
  
 ### How does it work
  
-This website uses Flask to route viewers through the site. The site is styled with Bootstrap. The charts are created using D3, Crossfilter and DC. Tour was made using intro.js. Data for the website is stored in MongoDB, all the collections I used were stripped down by myself, excluding types.csv, in Mongoshell in order to reduce the amount of information being processed.
+This website uses **Flask** to route viewers through the site. The site is styled with **Bootstrap**. The charts are created using **D3**, **Crossfilter** and **DC**. Tour was made using **intro.js**. Data for the website is stored in **MongoDB**, all the collections I used were stripped down by myself, excluding types.csv, in Mongoshell in order to reduce the amount of information being processed. My **CSS** has been split by page to make it more readable for myself, this includes @media.
 
 ## Features
  
@@ -44,10 +44,10 @@ This website uses Flask to route viewers through the site. The site is styled wi
 - [MongoDB](https://www.mongodb.com)
     - Used to store information
 - [PyMongo](https://api.mongodb.com/python/current/)
-    - Used to allow interaction between Python and MongoDB
+    - Used to allow interaction between **Python** and **MongoDB**
 
 ## Testing
-    - Site was tested using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
+- Site was tested using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
 
 ## Credits
 
