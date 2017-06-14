@@ -72,23 +72,32 @@ function makeGraphs (error, pokemonproject) {
         .dimension(pokeNameDim)
         .group(numPokemonNames);
 
+    // Calculate dimensions for charts
+    var chartWidth = $("#pieChart").width();
+    var pieRadius = 200;
+    if(chartWidth >= 480){
+            pieRadius = 200;
+        } else {
+            pieRadius = chartWidth * 0.3;
+        }
+
     // Type Pie Chart
     typeChart
         .height(400)
-        .width(480)
-        .radius(185)
+        .width(chartWidth)
+        .cx([chartWidth/2 + 15])
+        .radius(pieRadius)
         .transitionDuration(1500)
-        .cy([200]).cx([200])
         // Adding correct colours for each type of pokemon
         .colors(d3.scale.ordinal().range(['#97EC8B','#3C2C17','#133061','#FFF63D','#F8A2F4','#930F0F','#F02E2E','#cca3de','#46087e','#21DD21','#BF9B76','#81E2D9','#E0E2E2','#8035EC','#C2378E','#656565','#87A0A9','#2681F5']))
-        .legend(dc.legend().x(410).y(20).itemHeight(13).gap(5))
+        .legend(dc.legend().x(5).y(20).itemHeight(13).gap(5))
         .renderLabel(false)
         .dimension(pokeTypeDim)
         .group(numPokemonByType);
 
     // HP Barchart
     hpChart
-        .width(480)
+        .width(chartWidth)
         .height(400)
         .dimension(pokeHPDim)
         .group(numPokemonHP)
@@ -101,7 +110,7 @@ function makeGraphs (error, pokemonproject) {
 
     // Attack Barchart
     atkChart
-        .width(480)
+        .width(chartWidth)
         .height(400)
         .dimension(pokeAttackDim)
         .group(numPokemonAttack)
@@ -114,7 +123,7 @@ function makeGraphs (error, pokemonproject) {
 
     // Defense Barchart
     defChart
-        .width(480)
+        .width(chartWidth)
         .height(400)
         .dimension(pokeDefenseDim)
         .group(numPokemonDefense)
@@ -127,7 +136,7 @@ function makeGraphs (error, pokemonproject) {
 
     // Special Attack Barchart
     satkChart
-        .width(480)
+        .width(chartWidth)
         .height(400)
         .dimension(pokeSpecialAttackDim)
         .group(numPokemonSpecialAttack)
@@ -140,7 +149,7 @@ function makeGraphs (error, pokemonproject) {
 
     // Special Defense Barchart
     sdefChart
-        .width(480)
+        .width(chartWidth)
         .height(400)
         .dimension(pokeSpecialDefenseDim)
         .group(numPokemonSpecialDefense)
@@ -153,7 +162,7 @@ function makeGraphs (error, pokemonproject) {
 
     // Speed Barchart
     spdChart
-        .width(480)
+        .width(chartWidth)
         .height(400)
         .dimension(pokeSpeedDim)
         .group(numPokemonSpeed)
@@ -172,6 +181,56 @@ function makeGraphs (error, pokemonproject) {
         })
         .group(all)
         .formatNumber(d3.format(".3s"));
+
+    // Make charts responsive
+    $(window).resize(function() {
+        // Recalculate chart size
+        chartWidth = $("#pieChart").width();
+        if(chartWidth >= 480){
+            pieRadius = 200;
+        } else {
+            pieRadius = chartWidth * 0.3;
+        }
+
+        // Set new values and redraw charts
+        typeChart
+            .width(chartWidth)
+            .cx([chartWidth / 2 + 15])
+            .radius(pieRadius)
+            .redraw();
+
+        hpChart
+            .width(chartWidth)
+            .rescale()
+            .redraw();
+
+        atkChart
+            .width(chartWidth)
+            .rescale()
+            .redraw();
+
+        defChart
+            .width(chartWidth)
+            .rescale()
+            .redraw();
+
+        satkChart
+            .width(chartWidth)
+            .rescale()
+            .redraw();
+
+        sdefChart
+            .width(chartWidth)
+            .rescale()
+            .redraw();
+
+        spdChart
+            .width(chartWidth)
+            .rescale()
+            .redraw();
+    });
+
+    console.log(hpChart.radius);
 
     // Render everything on page
     dc.renderAll();

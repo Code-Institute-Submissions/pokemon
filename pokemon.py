@@ -200,7 +200,6 @@ def pokemonproject():
                 "identifier": 1,
                 "gender_rate": 1,
                 "type1": "$types2.identifier",
-                # "type2": "$types2.type_id",
                 "hp": "$hp.base_stat",
                 "attack": "$atk.base_stat",
                 "defense": "$def.base_stat",
@@ -216,4 +215,4 @@ def pokemonproject():
 
 # Run App
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

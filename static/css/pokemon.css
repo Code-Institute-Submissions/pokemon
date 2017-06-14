@@ -1,3 +1,5 @@
+/* CSS kept in page order including @media as to improve readability for myself */
+
 /* Layout */
 body {
     background-color: ghostwhite;
@@ -133,6 +135,7 @@ body {
     text-align: center;
     margin: 10px;
 }
+
 div.dc-chart {
     float: none;
 }
@@ -157,8 +160,9 @@ div.dc-chart {
     font-size: 12px;
 }
 
-.totals {
-    font-size: 26px;
+.totals, #tour > h1, #tour > button, #pieChart {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .totals > .chart-stage, .chart-title, #total-pokemon, #tour > h1, #tour > button {
@@ -170,13 +174,8 @@ div.dc-chart {
     width: 50%;
 }
 
-#tour > button {
-    font-size: 24px;
-}
-
 #tour > h1 {
     margin: 0 20px 0 0;
-    font-size: 28px;
 }
 
 @media (max-width: 767px) {
