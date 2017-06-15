@@ -46,8 +46,190 @@ This website uses **Flask** to route viewers through the site. The site is style
 - [PyMongo](https://api.mongodb.com/python/current/)
     - Used to allow interaction between **Python** and **MongoDB**
 
+## Database
+- My database was by first stripping data I wasn't using out of the original CSV files, by importing them into MongoDB and using shell to remove unwanted fields. I created a Mongo query in python in order to join all the collections I was using into a single JSON file I could then import into MongoDB as one collection. The query I wrote is below.
+```# Creating one JSON to work with in javascript
+    pokemon_full = db.pokemon_species.aggregate([
+        {
+            # Adding first type to each pokemon
+            "$lookup": {
+                "from": 'pokemon_types',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'types'
+            }
+        },
+        {
+            "$unwind": '$types'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$types.slot", 1]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Changing type_id to labelled type
+            "$lookup": {
+                "from": 'types',
+                "localField": 'types.type_id',
+                "foreignField": 'id',
+                "as": 'types2'
+            }
+        },
+        {
+            "$unwind": '$types2'
+        },
+        {
+            # Adding HP to each pokemon
+            "$lookup": {
+                "from": 'pokemon_stats',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'hp'
+            }
+        },
+        {
+            "$unwind": '$hp'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$hp.stat_id", 1]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Adding attack to each pokemon
+            "$lookup": {
+                "from": 'pokemon_stats',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'atk'
+            }
+        },
+        {
+            "$unwind": '$atk'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$atk.stat_id", 2]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Adding defense to each pokemon
+            "$lookup": {
+                "from": 'pokemon_stats',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'def'
+            }
+        },
+        {
+            "$unwind": '$def'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$def.stat_id", 3]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Adding special attack to each pokemon
+            "$lookup": {
+                "from": 'pokemon_stats',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'satk'
+            }
+        },
+        {
+            "$unwind": '$satk'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$satk.stat_id", 4]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Adding special defense to each pokemon
+            "$lookup": {
+                "from": 'pokemon_stats',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'sdef'
+            }
+        },
+        {
+            "$unwind": '$sdef'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$sdef.stat_id", 5]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Adding speed to each pokemon
+            "$lookup": {
+                "from": 'pokemon_stats',
+                "localField": 'id',
+                "foreignField": 'pokemon_id',
+                "as": 'speed'
+            }
+        },
+        {
+            "$unwind": '$speed'
+        },
+        {
+            "$redact": {
+                "$cond": [
+                    {"$eq": ["$speed.stat_id", 6]},
+                    "$$KEEP",
+                    "$$PRUNE"
+                ]
+            }
+        },
+        {
+            # Creates format I want to use
+            "$project": {
+                "_id": 0,
+                "id": 1,
+                "identifier": 1,
+                "gender_rate": 1,
+                "type1": "$types2.identifier",
+                "hp": "$hp.base_stat",
+                "attack": "$atk.base_stat",
+                "defense": "$def.base_stat",
+                "special_attack": "$satk.base_stat",
+                "special_defense": "$sdef.base_stat",
+                "speed": "$speed.base_stat"
+            }
+        }
+    ])```
+
 ## Testing
-- Site was tested using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
+- Site was tested extensively using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
+- Site responsiveness was tested on all platforms by resizing the browser window.
 
 ## Credits
 
