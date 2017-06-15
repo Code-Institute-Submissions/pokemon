@@ -48,7 +48,8 @@ This website uses **Flask** to route viewers through the site. The site is style
 
 ## Database
 - My database was by first stripping data I wasn't using out of the original CSV files, by importing them into MongoDB and using shell to remove unwanted fields. I created a Mongo query in python in order to join all the collections I was using into a single JSON file I could then import into MongoDB as one collection. The query I wrote is below.
-```# Creating one JSON to work with in javascript
+```python
+ # Creating one JSON to work with in javascript
     pokemon_full = db.pokemon_species.aggregate([
         {
             # Adding first type to each pokemon
@@ -225,7 +226,8 @@ This website uses **Flask** to route viewers through the site. The site is style
                 "speed": "$speed.base_stat"
             }
         }
-    ])```
+    ])
+```
 
 ## Testing
 - Site was tested extensively using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
