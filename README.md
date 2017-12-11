@@ -12,7 +12,7 @@ This website is made to show a lot information about Pokemon in a visual way and
  
 ### How does it work
  
-This website uses **Flask** to route viewers through the site. The site is styled with **Bootstrap**. The charts are created using **D3**, **Crossfilter** and **DC**. Tour was made using **intro.js**. Data for the website is stored in **MongoDB**, all the collections I used were stripped down by myself, excluding types.csv, in Mongoshell in order to reduce the amount of information being processed. My **CSS** has been split by page to make it more readable for myself, this includes @media.
+This website uses **Flask** to route viewers through the site. The site is styled with **Bootstrap**. The charts are created using **D3**, **Crossfilter** and **DC**. **JQuery** was used to make charts responsive through use of window resize function and for **Bootstrap** to function. Tour was made using **intro.js**. Data for the website is stored in **MongoDB**, all the collections I used were stripped down by myself, excluding types.csv, in Mongoshell in order to reduce the amount of information being processed. My **CSS** has been split by page to make it more readable for myself, this includes @media.
 
 ## Features
  
@@ -35,6 +35,8 @@ This website uses **Flask** to route viewers through the site. The site is style
     - Base languages used in project
 - [Bootstrap](http://getbootstrap.com/)
     - Used to give my project a simple, responsive layout
+- [JQuery](https://jquery.com)
+    - Used for bootstrap and to make charts responsive
 - [Flask](http://flask.pocoo.org)
     - Used to route through the website
 - [IntroJS](http://introjs.com)
@@ -56,6 +58,24 @@ This website uses **Flask** to route viewers through the site. The site is style
 ## Testing
 - Site was tested extensively using Chrome, Firefox, Opera and Edge. Was also tested using Safari on ipad and on an android phone.
 - Site responsiveness was tested on all platforms by resizing the browser window.
+
+## Contributing
+
+### Getting the code up and running
+1. Firstly you will need to clone this repository by running the ```git clone <project's Github URL>``` command
+2. After you've that you'll need to make sure that you have **Python 2.7.14** installed
+    - You can get **Python** by installing it from [here](https://www.python.org/downloads/release/python-2714/)
+3. Ensure you have **pip** installed by running ```pip --version```, it should be installed from Python installation
+4. Install virtualenv with ```pip install virtualenv``` then create a virtual environment with ```virtualenv pokemon```
+5. Activate your virtual environment using ```pokemon\scripts\activate```
+6. Make sure you are in project root directory and use ```pip install -r requirements.txt``` to install requirements
+7. Make sure you have **MongoDB** installed and have your PATH environment variable setup
+    - You can get the **MongoDB** installer [here](https://www.mongodb.com/download-center#production)
+8. You can start your **MongoDB** server with ```mongod -dbpath DATABASE_STORAGE_PATH --port 27017```
+9. Upload the database files to server with ```mongoimport --db pokemon_project --collection pokemonfull --file C:\PATH\TO\pokemonfull.json```
+10. Now you can run the project using ```python pokemon.py```
+11. The project will now run on [localhost](http://127.0.0.1:5000)
+12. Make changes to the code and if you think it belongs in here then just submit a pull request
 
 ## Credits
 
