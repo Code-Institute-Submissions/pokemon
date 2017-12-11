@@ -10,7 +10,7 @@ body {
 #backgroundcontainer {
     position: fixed;
     z-index: -1;
-    top: 0;
+    top: 53px;
 }
 
 #backgroundimg {
