@@ -27,6 +27,7 @@ def about():
 def charts():
     return render_template("charts.html")
 
+
 @app.route("/pokemonproject")
 def pokemonproject():
     # Connection to MongoDB
@@ -45,6 +46,13 @@ def pokemonproject():
 
     # Return full pokemon JSON
     return json.dumps(list(pokemon_full))
+
+
+# Route to 404.html when page not found
+@app.errorhandler(404)
+def error_404(error):
+    return render_template("404.html"), 404
+
 
 # Run App
 if __name__ == "__main__":
